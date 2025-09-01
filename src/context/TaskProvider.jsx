@@ -9,9 +9,12 @@ export const TaskProvider = ({ children }) => {
 
   const fetchTasks = async () => {
     const token = localStorage.getItem("token");
-    const res = await axios.get("/api/tasks", {
-      headers: { Authorization: `Bearer ${token}` },
-    });
+    const res = await axios.get(
+      "https://task-manager-backend-3mau.onrender.com/api/tasks",
+      {
+        headers: { Authorization: `Bearer ${token}` },
+      }
+    );
     setIsTaskLoading(true);
     setTasks(res.data);
     setIsTaskLoading(false);
