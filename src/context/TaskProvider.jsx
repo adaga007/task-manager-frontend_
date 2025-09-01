@@ -9,12 +9,9 @@ export const TaskProvider = ({ children }) => {
 
   const fetchTasks = async () => {
     const token = localStorage.getItem("token");
-    const res = await axios.get(
-      "https://task-manager-backend-3mau.onrender.com/api/tasks",
-      {
-        headers: { Authorization: `Bearer ${token}` },
-      }
-    );
+    const res = await axios.get(`${import.meta.env.VITE_API_URL}/api/tasks`, {
+      headers: { Authorization: `Bearer ${token}` },
+    });
     setIsTaskLoading(true);
     setTasks(res.data);
     setIsTaskLoading(false);
@@ -28,7 +25,7 @@ export const TaskProvider = ({ children }) => {
     setIsTaskLoading(true);
     try {
       const token = localStorage.getItem("token");
-      await axios.post("/api/tasks", taskData, {
+      await axios.post(`${import.meta.env.VITE_API_URL}/api/tasks`, taskData, {
         headers: { Authorization: `Bearer ${token}` },
       });
       window.location.href = "/tasks";
@@ -43,9 +40,13 @@ export const TaskProvider = ({ children }) => {
     setIsTaskLoading(true);
     try {
       const token = localStorage.getItem("token");
-      await axios.put(`/api/tasks/${id}`, taskData, {
-        headers: { Authorization: `Bearer ${token}` },
-      });
+      await axios.put(
+        `${import.meta.env.VITE_API_URL}/api/tasks/${id}`,
+        taskData,
+        {
+          headers: { Authorization: `Bearer ${token}` },
+        }
+      );
 
       window.location.href = "/tasks";
     } catch (err) {
@@ -60,7 +61,7 @@ export const TaskProvider = ({ children }) => {
     setIsTaskLoading(true);
     try {
       const token = localStorage.getItem("token");
-      await axios.delete(`/api/tasks/${id}`, {
+      await axios.delete(`${import.meta.env.VITE_API_URL}/api/tasks/${id}`, {
         headers: { Authorization: `Bearer ${token}` },
       });
       fetchTasks();
