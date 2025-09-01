@@ -28,7 +28,7 @@ export default function UserProvider({ children }) {
       localStorage.setItem("token", res.data.token);
       setUser(res.data.user);
       localStorage.setItem("user", JSON.stringify(res.data.user));
-      window.location.href = "/tasks";
+      window.location.href = "/dashboard";
       setIsLoading(false);
     } catch (err) {
       if (err.response && err.response.status === 400) {
@@ -51,7 +51,7 @@ export default function UserProvider({ children }) {
       localStorage.setItem("token", res.data.token);
       setUser(res.data.user);
       localStorage.setItem("user", JSON.stringify(res.data.user));
-      window.location.href = "/tasks";
+      window.location.href = "/dashboard";
       setIsLoading(false);
     } catch (err) {
       if (err.response && err.response.status === 400) {

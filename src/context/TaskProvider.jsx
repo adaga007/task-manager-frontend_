@@ -28,7 +28,7 @@ export const TaskProvider = ({ children }) => {
       await axios.post(`${import.meta.env.VITE_API_URL}/api/tasks`, taskData, {
         headers: { Authorization: `Bearer ${token}` },
       });
-      window.location.href = "/tasks";
+      window.location.href = "/dashboard";
       setIsTaskLoading(false);
     } catch (err) {
       console.error(err);
@@ -47,7 +47,7 @@ export const TaskProvider = ({ children }) => {
         }
       );
 
-      window.location.href = "/tasks";
+      window.location.href = "/dashboard";
       setIsTaskLoading(false);
     } catch (err) {
       console.error(err);

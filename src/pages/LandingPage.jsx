@@ -22,7 +22,7 @@ export default function LandingPage() {
 
         <div className="mt-8 flex gap-4">
           <Link
-            to={user ? "/tasks" : "/register"}
+            to={user ? "/dashboard" : "/register"}
             className="px-6 py-3 bg-blue-600 text-white rounded-lg shadow-md hover:bg-blue-700"
           >
             {user ? "Create Tasks" : "Get Started"}

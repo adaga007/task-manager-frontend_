@@ -10,19 +10,11 @@ export default function Dashboard() {
   const handleUpdateClick = (task) => {
     // navigate(`/tasks/${task._id}/edit`, { state: task });
     setTaskUpdate(task);
-    navigate(`/tasks/${task._id}/edit`);
+    navigate(`/dashboard/${task._id}/edit`);
   };
   const handleDeleteClick = (id) => {
     deleteTask(id);
   };
-
-  // if (isTaskLoading) {
-  //   return (
-  //     <div className="flex items-center justify-center h-screen">
-  //       <div className="w-12 h-12 border-4 border-blue-600 border-dashed rounded-full animate-spin"></div>
-  //     </div>
-  //   );
-  // }
 
   return (
     <div className="min-h-screen flex flex-col bg-gradient-to-br from-blue-50 via-white to-purple-50">
