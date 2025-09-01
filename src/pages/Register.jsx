@@ -16,8 +16,6 @@ export default function Register() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     register(formData);
-
-    // Add axios POST request here
   };
 
   return (

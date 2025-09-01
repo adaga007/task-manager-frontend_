@@ -1,10 +1,8 @@
 import { useState } from "react";
-// import { useNavigate } from "react-router-dom";
 import { useTask } from "../context/taskContext";
 import LoadingButton from "../components/LoadingButton";
 
 export default function UpdateTask() {
-  // const navigate = useNavigate();
   const [formData, setFormData] = useState({
     title: "",
     description: "",
@@ -70,14 +68,6 @@ export default function UpdateTask() {
               <option value="completed">Completed</option>
             </select>
           </div>
-
-          {/* Submit Button */}
-          {/* <button
-            type="submit"
-            className="w-full py-2 bg-green-500 hover:bg-green-600 text-white font-semibold rounded-lg transition duration-200"
-          >
-            Add Task
-          </button> */}
           <LoadingButton isTaskLoading={isTaskLoading} type="submit">
             {isTaskLoading ? "Adding..." : "Add Task"}
           </LoadingButton>

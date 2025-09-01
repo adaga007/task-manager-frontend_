@@ -8,7 +8,6 @@ export default function Dashboard() {
   const navigate = useNavigate();
 
   const handleUpdateClick = (task) => {
-    // navigate(`/tasks/${task._id}/edit`, { state: task });
     setTaskUpdate(task);
     navigate(`/dashboard/${task._id}/edit`);
   };
@@ -59,7 +58,6 @@ export default function Dashboard() {
 
                 <div className="mt-4 flex gap-2">
                   <button
-                    // onClick={() => setSelectedTask(task)}
                     onClick={() => handleUpdateClick(task)}
                     className="px-4 bg-blue-500 text-sm text-white rounded-lg hover:bg-blue-600"
                   >

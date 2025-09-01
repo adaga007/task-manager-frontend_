@@ -52,14 +52,6 @@ export default function Login() {
               required
             />
           </div>
-
-          {/* Submit Button */}
-          {/* <button
-            type="submit"
-            className="w-full py-2 bg-blue-500 hover:bg-blue-600 text-white font-semibold rounded-lg transition duration-200"
-          >
-            Login
-          </button> */}
           <LoadingButton isLoading={isLoading} type="submit">
             {isLoading ? "Login in..." : "Login"}
           </LoadingButton>

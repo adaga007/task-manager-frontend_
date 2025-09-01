@@ -12,7 +12,6 @@ export default function UpdateTask() {
   const { id } = useParams(); // task ID from URL
   const { taskUpdate, updateTask, isTaskLoading } = useTask();
 
-  // const task = location.state;
   // Pre-fill form with task data when page loads
   useEffect(() => {
     if (taskUpdate) {
@@ -85,12 +84,6 @@ export default function UpdateTask() {
           </div>
 
           {/* Submit Button */}
-          {/* <button
-            type="submit"
-            className="w-full py-2 bg-green-500 hover:bg-green-600 text-white font-semibold rounded-lg transition duration-200"
-          >
-            Update Task
-          </button> */}
           <LoadingButton isLoading={isTaskLoading} type="submit">
             {isTaskLoading ? "Updating..." : "Update Task"}
           </LoadingButton>

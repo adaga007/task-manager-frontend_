@@ -17,7 +17,7 @@ export const TaskProvider = ({ children }) => {
     setIsTaskLoading(false);
   };
 
-  // ✅ Automatically load tasks when TaskProvider mounts
+  // Automatically load tasks when TaskProvider mounts
   useEffect(() => {
     fetchTasks();
   }, []);
@@ -63,7 +63,6 @@ export const TaskProvider = ({ children }) => {
         headers: { Authorization: `Bearer ${token}` },
       });
       fetchTasks();
-      // setTasks((prev) => prev.filter((task) => task._id !== id)); // remove locally
       setIsTaskLoading(false);
     } catch (err) {
       console.error(err);

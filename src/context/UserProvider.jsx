@@ -1,14 +1,11 @@
-// src/context/UserProvider.jsx
 import { useState, useEffect } from "react";
 import { UserContext } from "./userContext";
-// import { useNavigate } from "react-router-dom";
 import axios from "axios";
 
 export default function UserProvider({ children }) {
   const [user, setUser] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
   const [authError, setAuthError] = useState(null);
-  // const navigate = useNavigate();
 
   // Load user from localStorage on mount
   useEffect(() => {
@@ -46,7 +43,6 @@ export default function UserProvider({ children }) {
         `${import.meta.env.VITE_API_URL}/api/auth/register`,
         formData
       );
-      // alert(res.status);
 
       localStorage.setItem("token", res.data.token);
       setUser(res.data.user);
