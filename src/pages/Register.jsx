@@ -8,7 +8,7 @@ export default function Register() {
     email: "",
     password: "",
   });
-  const { register, isLoading } = useUser();
+  const { register, isLoading, authError } = useUser();
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -26,6 +26,7 @@ export default function Register() {
         <h2 className="text-2xl font-bold text-center text-gray-800 mb-6">
           Create an Account
         </h2>
+        <p className="text-red-700">{authError}</p>
         <form onSubmit={handleSubmit} className="space-y-5">
           {/* Username */}
           <div>

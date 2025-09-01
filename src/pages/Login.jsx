@@ -7,7 +7,7 @@ export default function Login() {
     email: "",
     password: "",
   });
-  const { login, isLoading } = useUser();
+  const { login, isLoading, authError } = useUser();
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
@@ -23,6 +23,7 @@ export default function Login() {
         <h2 className="text-2xl font-bold text-center text-gray-800 mb-6">
           Welcome Back
         </h2>
+        <p className="text-red-700">{authError}</p>
         <form onSubmit={handleSubmit} className="space-y-5">
           {/* Email */}
           <div>

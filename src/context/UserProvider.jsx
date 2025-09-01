@@ -7,6 +7,7 @@ import axios from "axios";
 export default function UserProvider({ children }) {
   const [user, setUser] = useState(null);
   const [isLoading, setIsLoading] = useState(false);
+  const [authError, setAuthError] = useState(null);
   // const navigate = useNavigate();
 
   // Load user from localStorage on mount
@@ -28,10 +29,13 @@ export default function UserProvider({ children }) {
       setUser(res.data.user);
       localStorage.setItem("user", JSON.stringify(res.data.user));
       window.location.href = "/tasks";
-    } catch (err) {
-      console.error(err);
-    } finally {
       setIsLoading(false);
+    } catch (err) {
+      if (err.response && err.response.status === 400) {
+        setAuthError(err.response.data.msg);
+        setIsLoading(false);
+      }
+      console.error(err);
     }
   };
 
@@ -42,14 +46,18 @@ export default function UserProvider({ children }) {
         `${import.meta.env.VITE_API_URL}/api/auth/register`,
         formData
       );
+      // alert(res.status);
+
       localStorage.setItem("token", res.data.token);
       setUser(res.data.user);
       localStorage.setItem("user", JSON.stringify(res.data.user));
       window.location.href = "/tasks";
-    } catch (err) {
-      console.error(err);
-    } finally {
       setIsLoading(false);
+    } catch (err) {
+      if (err.response && err.response.status === 400) {
+        setAuthError(err.response.data.msg);
+        setIsLoading(false);
+      } else console.error(err);
     }
   };
 
@@ -60,7 +68,9 @@ export default function UserProvider({ children }) {
   };
 
   return (
-    <UserContext.Provider value={{ user, login, logout, isLoading, register }}>
+    <UserContext.Provider
+      value={{ user, login, logout, isLoading, authError, register }}
+    >
       {children}
     </UserContext.Provider>
   );

@@ -29,10 +29,9 @@ export const TaskProvider = ({ children }) => {
         headers: { Authorization: `Bearer ${token}` },
       });
       window.location.href = "/tasks";
+      setIsTaskLoading(false);
     } catch (err) {
       console.error(err);
-    } finally {
-      setIsTaskLoading(false);
     }
   };
 
@@ -49,10 +48,9 @@ export const TaskProvider = ({ children }) => {
       );
 
       window.location.href = "/tasks";
+      setIsTaskLoading(false);
     } catch (err) {
       console.error(err);
-    } finally {
-      setIsTaskLoading(false);
     }
   };
 
@@ -66,10 +64,9 @@ export const TaskProvider = ({ children }) => {
       });
       fetchTasks();
       // setTasks((prev) => prev.filter((task) => task._id !== id)); // remove locally
+      setIsTaskLoading(false);
     } catch (err) {
       console.error(err);
-    } finally {
-      setIsTaskLoading(false);
     }
   };
   return (
